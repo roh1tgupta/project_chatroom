@@ -5,7 +5,7 @@ const cors = require('cors');
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 const router = require('./router')
 
 const app = express();
@@ -15,11 +15,14 @@ app.use(cors());
  
 const server = http.createServer(app);
 
-const io = socketio(server);
+const ios = socketio(server);
+const io = ios.of("/first");
 
 io.on("connection", (socket) => {
 
+  console.log("hello world!! .   . . . ")
   socket.on('join', ({name, room}, callback) => {
+    console.log("joined......hello world!! .   . . . ", name, room)
     const { error, user } = addUser({id: socket.id, name, room})
 
     if (error) return callback(error)

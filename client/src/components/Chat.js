@@ -17,7 +17,7 @@ const Chat = ({location})=> {
   const [users, setUsers] = useState([])
 
   // const ENDPOINT = 'https://react-chat-rooms.herokuapp.com/';
-  const ENDPOINT = 'http://localhost:5000';
+  const ENDPOINT = 'http://localhost:5001/first';
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search)
